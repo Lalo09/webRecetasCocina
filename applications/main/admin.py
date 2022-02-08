@@ -21,3 +21,4 @@ class RecetaAdmin(admin.ModelAdmin):
     filter_horizontal = ('category',)
 
 admin.site.register(Receta,RecetaAdmin)
+admin.site.site_header = 'Web Recetas de Cocina'

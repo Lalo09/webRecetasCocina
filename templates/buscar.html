@@ -8,13 +8,13 @@
         <link rel="stylesheet" href="{% static 'css/prueba.css' %}">
     </head>
     <body>
-        <h1>Hello from template with new direction</h1>
         {% for receta in recetas %}
-        {{receta.title}}
-        <br>
-        {{receta.content | safe}}
-        <hr>
+            <a href="{% url 'receta' slug=receta.slug %}" >{{receta.title}}</a>
+            <br>
+            {{receta.descripcion}}            
+            <hr>
         {% endfor %}
-        
-    </body>
+
+        {% include 'paginacion.html' %}
+    </body>    
 </html>
