@@ -1,20 +1,53 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Page Title</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/prueba.css' %}">
-    </head>
-    <body>
-        {% for receta in recetas %}
-            <a href="{% url 'receta' slug=receta.slug %}" >{{receta.title}}</a>
-            <br>
-            {{receta.descripcion}}            
-            <hr>
-        {% endfor %}
+  <head>
 
-        {% include 'paginacion.html' %}
-    </body>    
+    <meta charset="UTF-8" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    
+    <!--Estilos bootstrap-->
+    <link rel="stylesheet" href="{% static 'dist/css/bootstrap.css' %}">
+
+    <!--Fuentes-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Redressed&family=Short+Stack&display=swap" rel="stylesheet">
+
+    <!--Estilos propios de css-->
+    <link rel="stylesheet" href="{% static 'css/prueba.css' %}" />    
+
+    <!--Iconos-->
+    <script src="https://kit.fontawesome.com/c585003a00.js" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+    <h1 class="titulo">Recetas</h1>
+   
+    <label for="buscar">Buscar una receta:</label>
+    <input type="text" name="buscar" id="buscar" />
+    <button id="botonBuscador" onclick="cambia_enlace()" class="btn btn-primary px-2"><i class="fa-solid fa-magnifying-glass"></i> Buscar</button>
+    <hr />
+    {% for receta in recetas %}
+    <a href="{% url 'receta' slug=receta.slug %}">{{receta.title}}</a>
+    <br />
+    {{receta.descripcion}}
+    <hr />
+    {% endfor %} {% include 'paginacion.html' %}
+
+  </body>
+  
+  <script>
+    function cambia_enlace(){
+        var buscar = document.getElementById("buscar").value;
+        console.log(buscar);
+        window.location.href = '/buscar/'+buscar;
+     }
+  </script>
+
+  <!--Librerias de jquery para boostrap-->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="{% static 'dist/js/bootstrap.min.js' %}"></script>
 </html>
