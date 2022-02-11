@@ -15,6 +15,7 @@ def home(request):
     page_receta = paginator.get_page(page)
 
     return render(request,"home.html",{
+        "title":"web de recetas",
         "recetas":page_receta
     })
 
