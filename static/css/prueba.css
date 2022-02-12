@@ -5,6 +5,10 @@ body{
     font-family: 'Redressed', cursive;
 }
 
+.oscurecer-img{
+    filter: brightness(50%);
+  }
+
 /*
 *font-family: 'Redressed', cursive;
 font-family: 'Short Stack', cursive;

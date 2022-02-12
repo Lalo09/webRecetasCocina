@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from .models import Receta
 
-num_items = 3;
+num_items = 10;
 
 def home(request):
 
@@ -17,6 +17,12 @@ def home(request):
     return render(request,"home.html",{
         "title":"web de recetas",
         "recetas":page_receta
+    })
+
+def info(request):
+    
+    return render(request,"info.html",{
+        "title":"Acerca de la web"
     })
 
 def receta(request,slug):

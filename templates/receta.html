@@ -1,21 +1,20 @@
+{% extends 'receta-base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Page Title</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/prueba.css' %}">
-    </head>
-    <body>        
-         <h1>{{receta.title}}</h1>
-        <br>
-        {{receta.content | safe}}
-        <hr>
-        <h3>Tambien te puede interesar</h3>
-        <div>
-            <h4><a href="{% url 'receta' slug=receta_sugerencia.slug %}" >{{receta_sugerencia.title}}</a></h4>
-            <p>{{receta_sugerencia.descripcion}}</p>
-        </div>        
-    </body>
-</html>
+{% block title %}{{receta.title}}{% endblock title %}
+{% block recetaContent %}
+    <h1 class="title">{{receta.title}}</h1>
+    <br>
+    {{receta.content | safe}}
+    <hr>
+    <div class="card text-center my-3">
+        <div class="card-header">
+            <strong>Tambien te puede interesar:</strong>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><a href="{% url 'receta' slug=receta_sugerencia.slug %}" >{{receta_sugerencia.title}}</a></h5>
+          <p class="card-text">{{receta_sugerencia.descripcion}}</p>
+          <img src="{% static 'img/gorro-de-cocinero.png' %}" class="rounded" alt="..." widht="150" height="150">
+        </div>
+      </div>
+{% endblock recetaContent %}
+
