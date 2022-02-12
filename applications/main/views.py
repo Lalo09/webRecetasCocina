@@ -36,6 +36,19 @@ def receta(request,slug):
         'receta_sugerencia':receta_sugerencia
     })
 
+def receta_sencilla(request):
+    
+    recetas = Receta.objects.filter(category=2)
+    paginator = Paginator(recetas,num_items)
+
+    page = request.GET.get('page')
+    page_receta = paginator.get_page(page)
+
+    return render(request,"page.html",{
+        "title":"Recetas sencillas",
+        "recetas":page_receta
+    })
+
 def buscar(request,buscar):
     
     recetas = Receta.objects.filter(Q(title__icontains=buscar) | Q(descripcion__icontains=buscar))

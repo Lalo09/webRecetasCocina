@@ -77,12 +77,12 @@
   <div class="card m-5">
     <div class="container">
       <div class="row m-1">
-        <div class="col-md-2">
-          <div class="text-center">
-            <img src="{% static 'img/gorro-de-cocinero.png' %}" class="rounded" alt="..." widht="150" height="150">
+        <div class="col-md-4">
+          <div class="text-center mt-4">
+            <img src="{{receta.image.url}}" class="img-fluid" alt="..." widht="150" height="150" max-widht="150" max-height="150">
           </div>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title"> <a href="{% url 'receta' slug=receta.slug %}">{{receta.title}}</a><span class="badge badge-secondary mx-1"> {{receta.time_preparation}}</span><span class="badge badge-dark">{{receta.get_difficult_display}}</span></h5>
             <mark>Subido el {{receta.created_at}}</mark>
@@ -94,11 +94,8 @@
       </div>
     </div>
   </div>
-
   
-  {% endfor %}
-
-  
+  {% endfor %}  
 
   <!--Paginacion-->
   {% include 'paginacion.html' %}

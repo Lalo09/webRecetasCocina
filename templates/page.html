@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}{% endblock title %}
-{% block content %}
+{% block title %}{{title}}{% endblock title %}{{title}}
+
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            {% block recetaContent %}
-            {% endblock recetaContent %}
+            {% block content %}
+            <h1>{{title}}</h1>
+            
+            {% endblock content %}
         </div>
         <div class="col-md-4">
             <!--Buscador-->
@@ -51,5 +53,3 @@
         </div>
     </div>
 </div>
-{% endblock content %}
-

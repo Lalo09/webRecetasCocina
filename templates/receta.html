@@ -2,9 +2,20 @@
 {% load static %}
 {% block title %}{{receta.title}}{% endblock title %}
 {% block recetaContent %}
-    <h1 class="title">{{receta.title}}</h1>
-    <br>
-    {{receta.content | safe}}
+    <div class="text-center my-3">
+      <h1 class="title">{{receta.title}}</h1>
+      <p>{{receta.descripcion}}</p>
+      <hr>
+      <img src="{{receta.image.url}}" class="img-fluid" alt="...">
+      <hr>
+    </div>
+    <div>
+      <p class="blockquote-footer">Receta redactada por {{receta.user}}</p>
+      <h3><span class="badge badge-secondary mx-1"> {{receta.time_preparation}}</span><span class="badge badge-dark">{{receta.get_difficult_display}}</span> </h3>
+    </div>
+    <div class="mt-3" >
+      {{receta.content | safe}}
+    </div>
     <hr>
     <div class="card text-center my-3">
         <div class="card-header">
