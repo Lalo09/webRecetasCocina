@@ -3,6 +3,7 @@
 {% block title %}{{title}}{% endblock title %}{{title}}
 
 {% block content %}
+
   <!--Buscador-->
   <div class="mx-lg-5 pb-3">
       <h2>Que vas a cocinar hoy?<h2>
@@ -59,34 +60,34 @@
   <hr>
 
   <!--Listado de recetas-->
-
   <h2 class="titulo display-4 text-center">Todas nuestras recetas</h2>
 
   {% for receta in recetas %}
-  <div class="card m-5">
-    <div class="container">
-      <div class="row m-1">
-        <div class="col-md-4">
-          <div class="text-center mt-4">
-            <img src="{{receta.image.url}}" class="img-fluid" alt="..." widht="150" height="150" max-widht="150" max-height="150">
+    <div class="card m-5">
+      <div class="container">
+        <div class="row m-1">
+          <div class="col-md-4">
+            <div class="text-center mt-4">
+              <img src="{{receta.image.url}}" class="img-fluid" alt="..." widht="150" height="150" max-widht="150" max-height="150">
+            </div>
           </div>
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title"> <a href="{% url 'receta' slug=receta.slug %}">{{receta.title}}</a><span class="badge badge-secondary mx-1"> {{receta.time_preparation}}</span><span class="badge badge-dark">{{receta.get_difficult_display}}</span></h5>
-            <mark>Subido el {{receta.created_at}}</mark>
-            <p class="card-text">{{receta.descripcion}}</p>
-            
-            <a href="#" class="btn btn-secondary"> <i class="fa-solid fa-eye"></i> Ver receta completa</a>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"> <a href="{% url 'receta' slug=receta.slug %}">{{receta.title}}</a><span class="badge badge-secondary mx-1"> {{receta.time_preparation}}</span><span class="badge badge-dark">{{receta.get_difficult_display}}</span></h5>
+              <mark>Subido el {{receta.created_at}}</mark>
+              <p class="card-text">{{receta.descripcion}}</p>
+              
+              <a href="#" class="btn btn-secondary"> <i class="fa-solid fa-eye"></i> Ver receta completa</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  
+    </div>  
   {% endfor %}  
 
   <!--Paginacion-->
   {% include 'paginacion.html' %}
+
   <hr>
+
 {% endblock content %}

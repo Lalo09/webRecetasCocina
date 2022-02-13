@@ -5,9 +5,6 @@ import os
 from unipath import Path
 BASE_DIR = Path(__file__).ancestor(3)
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '0uo17=lklp!d9ui+@5^ezd=a(%^i8a*j+sga=c)wnx_55^g+qt'
 
@@ -59,7 +56,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'webRecetas.wsgi.application'
 
 # Password validation
-# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -78,7 +74,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/3.0/topics/i18n/
 
 LANGUAGE_CODE = 'es-mx'
 
@@ -90,6 +85,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+#Configuracion de ckeditor
 CKEDITOR_CONFIGS = {
     'default': {
         'skin': 'moono',

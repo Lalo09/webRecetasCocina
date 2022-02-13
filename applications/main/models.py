@@ -6,6 +6,7 @@ from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 
 class Categoria(models.Model):
+    
     name = models.CharField(max_length=100,verbose_name='Nombre')
     descripcion = models.TextField(max_length=255,verbose_name='Descripcion')
     created_at = models.DateTimeField(auto_now_add=True,verbose_name='Creado el')

@@ -1,12 +1,14 @@
-from unicodedata import category
 from django.shortcuts import get_object_or_404, render
-from django.views.generic import TemplateView
 from django.core.paginator import Paginator
 from django.db.models import Q
 from .models import Categoria, Receta
 
 num_items = 6;
 
+"""
+*Pagina de inicio
+*URL: /
+"""
 def home(request):
 
     recetas = Receta.objects.filter(public=True)
@@ -20,6 +22,11 @@ def home(request):
         "recetas":page_receta
     })
 
+"""
+*Pagina de informacion
+*URL: /info
+*
+"""
 def info(request):
     
     return render(request,"info.html",{
@@ -135,5 +142,3 @@ def recetas_por_categoria(request,id):
         "title":"Todas las recetas de "+categoria.name,
         "recetas":page_receta
     })
-
-
