@@ -25,7 +25,7 @@
                         <mark>Subido el {{receta.created_at}}</mark>
                         <p class="card-text">{{receta.descripcion}}</p>
                         
-                        <a href="#" class="btn btn-secondary"> <i class="fa-solid fa-eye"></i> Ver receta completa</a>
+                        <a href="{% url 'receta' slug=receta.slug %}" class="btn btn-secondary"> <i class="fa-solid fa-eye"></i> Ver receta completa</a>
                       </div>
                     </div>
                   </div>
