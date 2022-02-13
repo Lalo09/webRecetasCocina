@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from unicodedata import category
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import TemplateView
 from django.core.paginator import Paginator
 from django.db.models import Q
-from .models import Receta
+from .models import Categoria, Receta
 
-num_items = 10;
+num_items = 6;
 
 def home(request):
 
@@ -38,7 +39,7 @@ def receta(request,slug):
 
 def receta_sencilla(request):
     
-    recetas = Receta.objects.filter(category=2)
+    recetas = Receta.objects.filter(difficult=0)
     paginator = Paginator(recetas,num_items)
 
     page = request.GET.get('page')
@@ -46,6 +47,64 @@ def receta_sencilla(request):
 
     return render(request,"page.html",{
         "title":"Recetas sencillas",
+        "recetas":page_receta
+    })
+
+def postres(request):
+    
+    categoria = get_object_or_404(Categoria, id=1)
+    
+    recetas = Receta.objects.filter(category=categoria)
+    paginator = Paginator(recetas,num_items)
+
+    page = request.GET.get('page')
+    page_receta = paginator.get_page(page)
+
+    return render(request,"page.html",{
+        "title":"Recetas de postres",
+        "recetas":page_receta
+    })
+
+def comidas(request):
+    
+    categoria = get_object_or_404(Categoria, id=2)
+    
+    recetas = Receta.objects.filter(category=categoria)
+    paginator = Paginator(recetas,num_items)
+
+    page = request.GET.get('page')
+    page_receta = paginator.get_page(page)
+
+    return render(request,"page.html",{
+        "title":"Recetas de comidas",
+        "recetas":page_receta
+    })
+
+def bebidas(request):
+    
+    categoria = get_object_or_404(Categoria, id=3)
+    
+    recetas = Receta.objects.filter(category=categoria)
+    paginator = Paginator(recetas,num_items)
+
+    page = request.GET.get('page')
+    page_receta = paginator.get_page(page)
+
+    return render(request,"page.html",{
+        "title":"Recetas de bebidas",
+        "recetas":page_receta
+    })
+
+def todas_las_recetas(request):
+    
+    recetas = Receta.objects.all()
+    paginator = Paginator(recetas,num_items)
+
+    page = request.GET.get('page')
+    page_receta = paginator.get_page(page)
+
+    return render(request,"page.html",{
+        "title":"Todas nuestras recetas",
         "recetas":page_receta
     })
 
@@ -58,6 +117,23 @@ def buscar(request,buscar):
     page_receta = paginator.get_page(page)
 
     return render(request,"buscar.html",{
+        "title":"Resultados de: "+buscar,
         "recetas":page_receta
     })
+
+def recetas_por_categoria(request,id):
+    
+    categoria = get_object_or_404(Categoria, id=id)
+    
+    recetas = Receta.objects.filter(category=categoria)
+    paginator = Paginator(recetas,num_items)
+
+    page = request.GET.get('page')
+    page_receta = paginator.get_page(page)
+
+    return render(request,"page.html",{
+        "title":"Todas las recetas de "+categoria.name,
+        "recetas":page_receta
+    })
+
 

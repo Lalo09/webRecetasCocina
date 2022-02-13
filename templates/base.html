@@ -44,19 +44,19 @@
                       <a class="nav-link" href="{% url 'info' %}">| Informacion |</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">| Recetas sencillas |</a>
+                      <a class="nav-link" href="{% url 'recetas-sencillas' %}">| Recetas sencillas |</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">| <i class="fa-solid fa-burger"></i> Comidas |</a>
+                      <a class="nav-link" href={% url 'comidas' %}>| <i class="fa-solid fa-burger"></i> Comidas |</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">| <i class="fa-solid fa-whiskey-glass"></i> Bebidas |</a>
+                        <a class="nav-link" href={% url 'bebidas' %}>| <i class="fa-solid fa-whiskey-glass"></i> Bebidas |</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">| <i class="fa-solid fa-cheese"></i> Postres |</a>
+                        <a class="nav-link" href={% url 'postres' %}>| <i class="fa-solid fa-cheese"></i> Postres |</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">| <i class="fa-solid fa-bars-staggered"></i> Todas nuestras recetas |</a>
+                        <a class="nav-link" href="{% url 'recetas' %}">| <i class="fa-solid fa-bars-staggered"></i> Todas nuestras recetas |</a>
                     </li>
                   </ul>
                 </div>

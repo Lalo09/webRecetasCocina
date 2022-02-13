@@ -7,7 +7,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 class Categoria(models.Model):
     name = models.CharField(max_length=100,verbose_name='Nombre')
-    descripcion = models.CharField(max_length=255,verbose_name='Descripcion')
+    descripcion = models.TextField(max_length=255,verbose_name='Descripcion')
     created_at = models.DateTimeField(auto_now_add=True,verbose_name='Creado el')
 
     class Meta:
@@ -41,6 +41,7 @@ class Receta(models.Model):
     class Meta:
         verbose_name = "Receta"
         verbose_name_plural = "Recetas"
+        ordering = ('-created_at',)
 
     def __str__(self):
         return self.title + " - " + str(self.created_at) 
